@@ -22,10 +22,10 @@
         <cm-col span="lg8 md12 sm24"><div class="color3"></div></cm-col>
       </cm-row>
       <!--<div style="clear: both;"></div>-->
-      <cm-row style="margin-top: 10px;" space="20">
-        <cm-col span="lg6"><div class="color1"></div></cm-col>
-        <cm-col span="lg6"><div class="color2"></div></cm-col>
-        <cm-col span="lg6"><div class="color3"></div></cm-col>
+      <cm-row style="margin-top: 10px;" space="10">
+        <cm-col span="lg6 sm8"><div class="color1"></div></cm-col>
+        <cm-col span="lg6 sm6"><div class="color2"></div></cm-col>
+        <cm-col span="lg6 sm10"><div class="color3"></div></cm-col>
         <cm-col span="lg6"><div class="color4"></div></cm-col>
       </cm-row>
     </div>
@@ -145,5 +145,8 @@ export default {
   /*text-align: center;*/
   /*color: #2c3e50;*/
   /*margin-top: 60px;*/
+  .cm-button {
+    margin: 5px;
+  }
 }
 </style>
