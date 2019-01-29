@@ -1,0 +1,108 @@
+.cm-button-type--text {
+  background-color: transparent;
+  color: dodgerblue !important;
+  &:hover {
+    color: #1a7fe2 !important;
+  }
+}
+.cm-button-type--default {
+  position: relative;
+  display: inline-block;
+  background-color: white;
+  box-sizing: border-box;
+  color: #4d4d4d !important;
+  &:hover {
+    background-color: rgba(230, 241, 255, 0.61) !important;
+    color: dodgerblue !important;
+  }
+  &:focus {
+    box-shadow: 0 0 0px 3px #e7f4ff;
+  }
+  &:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #c4d1dc;
+    border-radius: 5px;
+  }
+}
+.cm-button-type--primary {
+  background-color: dodgerblue;
+  &:hover {
+    background-color: #1c85ed;
+  }
+  &:focus {
+    box-shadow: 0 0 0px 3px #8ed0ff;
+  }
+}
+.cm-button-type--danger {
+  background-color: #ee412d;
+  &:hover {
+    background-color: #e22210;
+  }
+  &:focus {
+    box-shadow: 0 0 0px 3px #ff9389;
+  }
+}
+.cm-button-type--warning {
+  background-color: #ee7a00;
+  &:hover {
+    background-color: #e37400;
+  }
+  &:focus {
+    box-shadow: 0 0 0px 3px #eeb078;
+  }
+}
+.cm-button-type--success {
+  background-color: #00e47d;
+  &:hover {
+    background-color: #00c86d;
+  }
+  &:focus {
+    box-shadow: 0 0 0px 3px #6beeb5;
+  }
+}
+.cm-button-size--middle {
+  padding: 10px 20px;
+  height: 36px;
+  font-size: 16px;
+  line-height: 16px;
+}
+.cm-button-size--large {
+  padding: 12px 20px;
+  height: 40px;
+  font-size: 16px;
+  line-height: 16px;
+}
+.cm-button-size--small {
+  padding: 9px 15px;
+  height: 32px;
+  font-size: 14px;
+  line-height: 14px;
+}
+.cm-button {
+  position: relative;
+  border: 0;
+  user-select: none;
+  outline: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+  color: white;
+  font-weight: 400;
+  transition: box-shadow 0.2s;
+  transition: background 0.2s;
+  &:hover {
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  &:focus {
+    transition: box-shadow 0.2s;
+  }
+  &+& {
+    margin-left: 10px;
+  }
+}

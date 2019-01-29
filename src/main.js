@@ -3,8 +3,11 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import CrazymadUI from './ui/index.js'
+import './ui/theme/style.scss'
 
 Vue.config.productionTip = false
+Vue.use(CrazymadUI)
 
 /* eslint-disable no-new */
 new Vue({
