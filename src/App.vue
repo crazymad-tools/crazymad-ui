@@ -34,6 +34,33 @@
     <ul class="icon-list">
       <li><i class="cm-icon-address"></i></li>
       <li><i class="cm-icon-article"></i></li>
+      <li><i class="cm-icon-baseset"></i></li>
+      <li><i class="cm-icon-brief"></i></li>
+      <li><i class="cm-icon-category"></i></li>
+      <li><i class="cm-icon-comment"></i></li>
+      <li><i class="cm-icon-email"></i></li>
+      <li><i class="cm-icon-file"></i></li>
+      <li><i class="cm-icon-file-colorful"></i></li>
+      <li><i class="cm-icon-folder"></i></li>
+      <li><i class="cm-icon-folder-colorful"></i></li>
+      <li><i class="cm-icon-article"></i></li>
+      <li><i class="cm-icon-flag"></i></li>
+      <li><i class="cm-icon-image"></i></li>
+      <li><i class="cm-icon-list"></i></li>
+      <li><i class="cm-icon-novel"></i></li>
+      <li><i class="cm-icon-option"></i></li>
+      <li><i class="cm-icon-outline"></i></li>
+      <li><i class="cm-icon-password"></i></li>
+      <li><i class="cm-icon-phone-2"></i></li>
+      <li><i class="cm-icon-phone"></i></li>
+      <li><i class="cm-icon-relation"></i></li>
+      <li><i class="cm-icon-role"></i></li>
+      <li><i class="cm-icon-setting"></i></li>
+      <li><i class="cm-icon-transpond"></i></li>
+      <li><i class="cm-icon-trash"></i></li>
+      <li><i class="cm-icon-verification"></i></li>
+      <li><i class="cm-icon-volume"></i></li>
+      <li><i class="cm-icon-write"></i></li>
       <div style="clear: both;"></div>
     </ul>
     <router-view/>
