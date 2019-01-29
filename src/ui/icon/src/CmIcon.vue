@@ -1,13 +1,12 @@
 <template>
-  <i></i>
+  <i :class="[ 'cm-icon-' + name ]"></i>
 </template>
 
 <script>
 export default {
-  name: 'CmIcon'
+  name: 'CmIcon',
+  props: {
+    name: String
+  }
 }
 </script>
-
-<style scoped>
-
-</style>

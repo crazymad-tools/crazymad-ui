@@ -5,12 +5,16 @@
  */
 import CmButton from './button/index.js'
 import CmCol from './col/index.js'
-import CmRow from './row/index'
+import CmRow from './row/index.js'
+import CmIcon from './icon/index.js'
+import CmRadio from './radio/index.js'
 
 const components = [
   CmButton,
   CmCol,
-  CmRow
+  CmRow,
+  CmIcon,
+  CmRadio
 ]
 
 export default {

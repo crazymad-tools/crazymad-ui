@@ -1,4 +1,4 @@
-# y
+# crazymad-ui
 
 > front ui powered by vue.js
 

@@ -61,15 +61,35 @@
       <li><i class="cm-icon-verification"></i></li>
       <li><i class="cm-icon-volume"></i></li>
       <li><i class="cm-icon-write"></i></li>
+      <li><cm-icon name="address"></cm-icon></li>
+      <li><cm-icon name="phone"></cm-icon></li>
+      <li><cm-icon name="loading"></cm-icon></li>
+      <li><cm-icon name="right"></cm-icon></li>
       <div style="clear: both;"></div>
     </ul>
+    <hr/>
+    <h3>单选框</h3>
+    <div>
+      <cm-radio v-model="data" label="1">选项一</cm-radio>
+      <cm-radio v-model="data" label="2">选项二</cm-radio>
+    </div>
     <router-view/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+    return {
+      data: '1'
+    }
+  },
+  watch: {
+    data: function (val) {
+      console.log('data have change:' + val)
+    }
+  }
 }
 </script>
 
@@ -107,10 +127,14 @@ export default {
   overflow: hidden;
   li {
     float: left;
-    padding: 15px;
+    /*padding: 15px;*/
     border-right: 1px solid #c0c0c0;
     border-bottom: 1px solid #c0c0c0;
     box-sizing: border-box;
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    text-align: center;
   }
 }
 #app {
