@@ -74,10 +74,16 @@
       <cm-radio v-model="data" label="2">选项二</cm-radio>
     </div>
     <cm-row space="20">
-      <cm-col span="lg12 md12 sm12">
+     <cm-col span="lg12 md12 sm0">
         <cm-nav :list="navList" default="index" space="20" :slide="false"></cm-nav>
       </cm-col>
-      <cm-col span="lg12 md12 sm12">
+      <cm-col span="lg12 md12 sm0">
+        <cm-nav :list="navList" default="index" space="20" :slide="true"></cm-nav>
+      </cm-col>
+    </cm-row>
+    <cm-row>
+      <cm-col span="lg0 md0 sm24">
+        <cm-nav :list="navList" default="index" space="20" :slide="false"></cm-nav>
         <cm-nav :list="navList" default="index" space="20" :slide="true"></cm-nav>
       </cm-col>
     </cm-row>
