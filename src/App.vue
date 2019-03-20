@@ -73,6 +73,14 @@
       <cm-radio v-model="data" label="1">选项一</cm-radio>
       <cm-radio v-model="data" label="2">选项二</cm-radio>
     </div>
+    <cm-row space="20">
+      <cm-col span="lg12 md12 sm12">
+        <cm-nav :list="navList" default="index" space="20" :slide="false"></cm-nav>
+      </cm-col>
+      <cm-col span="lg12 md12 sm12">
+        <cm-nav :list="navList" default="index" space="20" :slide="true"></cm-nav>
+      </cm-col>
+    </cm-row>
     <router-view/>
   </div>
 </template>
@@ -82,7 +90,20 @@ export default {
   name: 'App',
   data () {
     return {
-      data: '1'
+      data: '2',
+      navList: [{
+        lable: 'CM小说',
+        value: 'index'
+      }, {
+        lable: '文章列表',
+        value: 'category'
+      }, {
+        lable: '用户中心',
+        value: 'auth'
+      }, {
+        lable: '登出',
+        value: 'logout'
+      }]
     }
   },
   watch: {

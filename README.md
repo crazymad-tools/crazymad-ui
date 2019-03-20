@@ -2,7 +2,7 @@
 
 > front ui powered by vue.js
 
-## Build Setup
+## 测试运行
 
 ``` bash
 # install dependencies

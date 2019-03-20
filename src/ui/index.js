@@ -8,13 +8,15 @@ import CmCol from './col/index.js'
 import CmRow from './row/index.js'
 import CmIcon from './icon/index.js'
 import CmRadio from './radio/index.js'
+import CmNav from './nav/index.js'
 
 const components = [
   CmButton,
   CmCol,
   CmRow,
   CmIcon,
-  CmRadio
+  CmRadio,
+  CmNav
 ]
 
 export default {

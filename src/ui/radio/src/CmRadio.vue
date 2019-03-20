@@ -1,7 +1,7 @@
 <template>
   <span class="cm-radio" @click="model = value === label ? null : label">
     <span class="radio-flag" :class="{ 'radio-flag-choosed': value === label }">
-      <i :class="[ model === label ? 'icon-right-choosed' : 'icon-right' ]" class="cm-icon-right"></i>
+      <i :class="[ value === label ? 'icon-right-choosed' : 'icon-right' ]" class="cm-icon-right"></i>
     </span>
     <span class="radio-label" :style="{ 'color': model !== label ? 'black' : '#1c83e9' }">
       <slot></slot>

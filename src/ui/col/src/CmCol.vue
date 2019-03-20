@@ -21,8 +21,6 @@ export default {
       return '0 ' + space / 2 + 'px'
     },
     classNames: function () {
-      console.log('hello world')
-      console.log(this.span)
       let item = this.span.trim().split(/\s+/)
       let classNames = ''
       item.forEach(name => {
