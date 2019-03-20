@@ -1,9 +1,9 @@
 {
   "name": "crazymad-ui",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "front ui powered by vue.js",
   "author": "crazy_mad",
-  "private": true,
+  "private": false,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
