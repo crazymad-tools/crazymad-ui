@@ -98,13 +98,13 @@ export default {
     return {
       data: '2',
       navList: [{
-        lable: 'CM小说',
+        lable: '小说',
         value: 'index'
       }, {
-        lable: '文章列表',
+        lable: '文章',
         value: 'category'
       }, {
-        lable: '用户中心',
+        lable: '用户',
         value: 'auth'
       }, {
         lable: '登出',
