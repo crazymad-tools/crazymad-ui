@@ -5,6 +5,9 @@
     <cm-button size="middle">中型按钮</cm-button>
     <cm-button size="small">小型按钮</cm-button>
     <cm-button size="small" type="text">文字按钮</cm-button>
+    <source-code>
+      <button-size></button-size>
+    </source-code>
     <hr/>
     <h3>按钮类型</h3>
     <cm-button size="middle" type="text">文字按钮</cm-button>
@@ -13,6 +16,9 @@
     <cm-button size="middle" type="danger">危险按钮</cm-button>
     <cm-button size="middle" type="warning">警告按钮</cm-button>
     <cm-button size="middle" type="success">成功按钮</cm-button>
+    <source-code>
+      <button-type></button-type>
+    </source-code>
     <hr/>
     <h3>布局</h3>
     <div class="layout-container">
@@ -28,6 +34,9 @@
         <cm-col span="lg6 sm10"><div class="color3"></div></cm-col>
         <cm-col span="lg6"><div class="color4"></div></cm-col>
       </cm-row>
+      <source-code>
+        <layout-demo></layout-demo>
+      </source-code>
     </div>
     <hr/>
     <h3>图标</h3>
@@ -66,6 +75,9 @@
       <li><cm-icon name="loading"></cm-icon></li>
       <li><cm-icon name="right"></cm-icon></li>
       <div style="clear: both;"></div>
+      <source-code>
+        <icon-demo></icon-demo>
+      </source-code>
     </ul>
     <hr/>
     <h3>单选框</h3>
@@ -73,27 +85,45 @@
       <cm-radio v-model="data" label="1">选项一</cm-radio>
       <cm-radio v-model="data" label="2">选项二</cm-radio>
     </div>
-    <cm-row space="20">
-     <cm-col span="lg12 md12 sm0">
-        <cm-nav :list="navList" default="index" space="20" :slide="false"></cm-nav>
-      </cm-col>
-      <cm-col span="lg12 md12 sm0">
-        <cm-nav :list="navList" default="index" space="20" :slide="true"></cm-nav>
-      </cm-col>
-    </cm-row>
-    <cm-row>
-      <cm-col span="lg0 md0 sm24">
-        <cm-nav :list="navList" default="index" space="20" :slide="false"></cm-nav>
-        <cm-nav :list="navList" default="index" space="20" :slide="true"></cm-nav>
-      </cm-col>
-    </cm-row>
+    <source-code>
+      <radio-demo></radio-demo>
+    </source-code>
+    <hr/>
+    <h3>导航栏</h3>
+    <!--<cm-row space="20">-->
+     <!--<cm-col span="lg12 md12 sm0">-->
+        <!--<cm-nav :list="navList" default="index" space="20" :slide="false"></cm-nav>-->
+      <!--</cm-col>-->
+      <!--<cm-col span="lg12 md12 sm0">-->
+        <!--<cm-nav :list="navList" default="index" space="20" :slide="true"></cm-nav>-->
+      <!--</cm-col>-->
+    <!--</cm-row>-->
+    <!--<cm-row>-->
+      <!--<cm-col span="lg0 md0 sm24">-->
+        <!--<cm-nav :list="navList" default="index" space="20" :slide="false"></cm-nav>-->
+        <!--<cm-nav :list="navList" default="index" space="20" :slide="true"></cm-nav>-->
+      <!--</cm-col>-->
+    <!--</cm-row>-->
+    <cm-nav :list="navList" default="index" space="20" :slide="true"></cm-nav>
+    <cm-nav :list="navList" default="index" space="20" :slide="false"></cm-nav>
+    <source-code>
+      <nav-demo></nav-demo>
+    </source-code>
     <router-view/>
   </div>
 </template>
 
 <script>
+import SourceCode from './components/SourceCode'
+import ButtonSize from './components/code/ButtonSize'
+import ButtonType from './components/code/ButtonType'
+import LayoutDemo from './components/code/LayoutDemo'
+import IconDemo from './components/code/IconDemo'
+import RadioDemo from './components/code/RadioDemo'
+import NavDemo from './components/code/NavDemo'
 export default {
   name: 'App',
+  components: { SourceCode, ButtonSize, ButtonType, LayoutDemo, IconDemo, RadioDemo, NavDemo },
   data () {
     return {
       data: '2',
