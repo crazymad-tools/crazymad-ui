@@ -14,5 +14,6 @@ export default {
 .cm-code {
   padding: 10px;
   background-color: rgba(151, 212, 255, 0.18);
+  overflow: scroll;
 }
 </style>

@@ -1,5 +1,15 @@
 <template>
   <div id="app">
+
+    <div id="example-1">
+      <button @click="show = !show">
+        Toggle render
+      </button>
+      <transition name="fade">
+        <p v-if="show">hello</p>
+      </transition>
+    </div>
+
     <h3>按钮尺寸</h3>
     <cm-button size="large">大型按钮</cm-button>
     <cm-button size="middle">中型按钮</cm-button>
@@ -109,7 +119,14 @@
     <source-code>
       <nav-demo></nav-demo>
     </source-code>
+    <hr/>
+    <h3>消息弹窗</h3>
+    <cm-button size="middle" type="primary" @click.native="popMessageBox('info')">消息</cm-button>
+    <cm-button size="middle" type="primary" @click.native="popMessageBox('warning')">警告</cm-button>
+    <cm-button size="middle" type="primary" @click.native="popMessageBox('error')">错误</cm-button>
+    <cm-button size="middle" type="primary" @click.native="popMessageBox('success')">成功</cm-button>
     <router-view/>
+
   </div>
 </template>
 
@@ -126,6 +143,7 @@ export default {
   components: { SourceCode, ButtonSize, ButtonType, LayoutDemo, IconDemo, RadioDemo, NavDemo },
   data () {
     return {
+      show: true,
       data: '2',
       navList: [{
         lable: '小说',
@@ -146,11 +164,37 @@ export default {
     data: function (val) {
       console.log('data have change:' + val)
     }
+  },
+  methods: {
+    popMessageBox (type) {
+      let message = ''
+      if (type === 'info') {
+        message = '这是普通消息弹窗'
+      } else if (type === 'success') {
+        message = '这是成功消息弹窗'
+      } else if (type === 'error') {
+        message = '这是错误消息弹窗'
+      } else {
+        message = '这是警告消息弹窗'
+      }
+      this.$message({
+        message: message,
+        type: type
+      })
+    }
   }
 }
 </script>
 
 <style lang="scss">
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  margin-top: -20px;
+}
+
 .layout-container {
   width: 100%;
 }
