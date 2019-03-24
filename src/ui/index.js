@@ -9,6 +9,7 @@ import CmRow from './row/index.js'
 import CmIcon from './icon/index.js'
 import CmRadio from './radio/index.js'
 import CmNav from './nav/index.js'
+import CmPager from './pager/index.js'
 
 const components = [
   CmButton,
@@ -16,7 +17,8 @@ const components = [
   CmRow,
   CmIcon,
   CmRadio,
-  CmNav
+  CmNav,
+  CmPager
 ]
 
 export default {

@@ -20,6 +20,30 @@ const mixin = {
       document.body.appendChild(msg.vm.$el)
 
       return msg.vm
+    },
+    $messageInfo (message) {
+      this.$message({
+        message,
+        type: 'info'
+      })
+    },
+    $messageSuccess (message) {
+      this.$message({
+        message,
+        type: 'success'
+      })
+    },
+    $messageWarning (message) {
+      this.$message({
+        message,
+        type: 'warning'
+      })
+    },
+    $messageError (message) {
+      this.$message({
+        message,
+        type: 'error'
+      })
     }
   }
 }

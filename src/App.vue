@@ -1,15 +1,5 @@
 <template>
   <div id="app">
-
-    <div id="example-1">
-      <button @click="show = !show">
-        Toggle render
-      </button>
-      <transition name="fade">
-        <p v-if="show">hello</p>
-      </transition>
-    </div>
-
     <h3>按钮尺寸</h3>
     <cm-button size="large">大型按钮</cm-button>
     <cm-button size="middle">中型按钮</cm-button>
@@ -80,10 +70,20 @@
       <li><i class="cm-icon-verification"></i></li>
       <li><i class="cm-icon-volume"></i></li>
       <li><i class="cm-icon-write"></i></li>
-      <li><cm-icon name="address"></cm-icon></li>
       <li><cm-icon name="phone"></cm-icon></li>
       <li><cm-icon name="loading"></cm-icon></li>
       <li><cm-icon name="right"></cm-icon></li>
+      <li><cm-icon name="cha"></cm-icon></li>
+      <li><cm-icon name="direction-left"></cm-icon></li>
+      <li><cm-icon name="direction-right"></cm-icon></li>
+      <li><cm-icon name="clock"></cm-icon></li>
+      <li><cm-icon name="notice"></cm-icon></li>
+      <li><cm-icon name="publish"></cm-icon></li>
+      <li><cm-icon name="table"></cm-icon></li>
+      <li><cm-icon name="link"></cm-icon></li>
+      <li><cm-icon name="plus"></cm-icon></li>
+      <li><cm-icon name="direction-short-left"></cm-icon></li>
+      <li><cm-icon name="direction-short-right"></cm-icon></li>
       <div style="clear: both;"></div>
       <source-code>
         <icon-demo></icon-demo>
@@ -100,20 +100,6 @@
     </source-code>
     <hr/>
     <h3>导航栏</h3>
-    <!--<cm-row space="20">-->
-     <!--<cm-col span="lg12 md12 sm0">-->
-        <!--<cm-nav :list="navList" default="index" space="20" :slide="false"></cm-nav>-->
-      <!--</cm-col>-->
-      <!--<cm-col span="lg12 md12 sm0">-->
-        <!--<cm-nav :list="navList" default="index" space="20" :slide="true"></cm-nav>-->
-      <!--</cm-col>-->
-    <!--</cm-row>-->
-    <!--<cm-row>-->
-      <!--<cm-col span="lg0 md0 sm24">-->
-        <!--<cm-nav :list="navList" default="index" space="20" :slide="false"></cm-nav>-->
-        <!--<cm-nav :list="navList" default="index" space="20" :slide="true"></cm-nav>-->
-      <!--</cm-col>-->
-    <!--</cm-row>-->
     <cm-nav :list="navList" default="index" space="20" :slide="true"></cm-nav>
     <cm-nav :list="navList" default="index" space="20" :slide="false"></cm-nav>
     <source-code>
@@ -125,8 +111,12 @@
     <cm-button size="middle" type="primary" @click.native="popMessageBox('warning')">警告</cm-button>
     <cm-button size="middle" type="primary" @click.native="popMessageBox('error')">错误</cm-button>
     <cm-button size="middle" type="primary" @click.native="popMessageBox('success')">成功</cm-button>
+    <hr/>
+    <h3>分页按钮</h3>
+    <div style="text-align: center; margin-bottom: 200px;">
+      <cm-pager></cm-pager>
+    </div>
     <router-view/>
-
   </div>
 </template>
 
@@ -143,7 +133,6 @@ export default {
   components: { SourceCode, ButtonSize, ButtonType, LayoutDemo, IconDemo, RadioDemo, NavDemo },
   data () {
     return {
-      show: true,
       data: '2',
       navList: [{
         lable: '小说',
@@ -167,34 +156,21 @@ export default {
   },
   methods: {
     popMessageBox (type) {
-      let message = ''
       if (type === 'info') {
-        message = '这是普通消息弹窗'
+        this.$messageInfo('这是普通消息弹窗')
       } else if (type === 'success') {
-        message = '这是成功消息弹窗'
+        this.$messageSuccess('这是成功消息弹窗')
       } else if (type === 'error') {
-        message = '这是错误消息弹窗'
+        this.$messageError('这是错误消息弹窗')
       } else {
-        message = '这是警告消息弹窗'
+        this.$messageWarning('这是警告消息弹窗')
       }
-      this.$message({
-        message: message,
-        type: type
-      })
     }
   }
 }
 </script>
 
 <style lang="scss">
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-  margin-top: -20px;
-}
-
 .layout-container {
   width: 100%;
 }
