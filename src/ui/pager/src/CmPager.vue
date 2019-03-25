@@ -1,18 +1,20 @@
 <template>
   <div class="cm-pager-container">
-    <div class="cm-pager-btn cm-pager-btn-left" @click="prevPage">
+    <div class="cm-pager-btn cm-pager-btn-left"
+         :class="{ 'cm-pager-btn-border-none': !pageBorder, 'cm-pager-btn-space': pageSpace}"
+         @click="prevPage">
       <cm-icon name="direction-short-left"></cm-icon>
-    </div><div class="cm-pager-btn cm-pager-btn-left-more" v-show="list[0] > 1" @click="prevMore">
+    </div><div class="cm-pager-btn cm-pager-btn-left-more" :class="{ 'cm-pager-btn-border-none': !pageBorder, 'cm-pager-btn-space': pageSpace}" v-show="list[0] > 1" @click="prevMore">
       &ensp;
     </div><div class="cm-pager-btn"
          v-for="index in list"
          :key="index"
-         :class="{ 'cm-pager-btn-active': index === current }"
+         :class="{ 'cm-pager-btn-active': index === current, 'cm-pager-btn-border-none': !pageBorder, 'cm-pager-btn-space': pageSpace}"
          @click="currentChange(index)">
     {{ index }}
-    </div><div class="cm-pager-btn cm-pager-btn-right-more" v-show="list[list.length - 1] < count" @click="nextMore">
+    </div><div class="cm-pager-btn cm-pager-btn-right-more" :class="{ 'cm-pager-btn-border-none': !pageBorder, 'cm-pager-btn-space': pageSpace}" v-show="list[list.length - 1] < count" @click="nextMore">
       &ensp;
-    </div><div class="cm-pager-btn cm-pager-btn-right" @click="nextPage">
+    </div><div class="cm-pager-btn cm-pager-btn-right" :class="{ 'cm-pager-btn-border-none': !pageBorder, 'cm-pager-btn-space': pageSpace}" @click="nextPage">
       <cm-icon name="direction-short-right"></cm-icon>
     </div>
   </div>
@@ -21,7 +23,7 @@
 <script>
 export default {
   name: 'CmPager',
-  props: [ 'pageCurrent', 'pageSize', 'pageTotal', 'pageCount', 'pageMax' ],
+  props: [ 'pageCurrent', 'pageSize', 'pageTotal', 'pageCount', 'pageMax', 'pageBorder', 'pageSpace' ],
   data () {
     return {
       // 页码列表
@@ -39,17 +41,43 @@ export default {
     }
   },
   mounted () {
-    // this.size = this.pageSize
+    console.log(this.pageBorder, this.pageSpace)
+    this.size = this.pageSize ? this.pageSize : this.size
+    this.total = this.pageTotal ? this.pageTotal : this.total
+    // 做多显示页码数必须为基数
+    this.max = this.pageMax ? (this.pageMax % 2 === 0 ? this.pageMax + 1 : this.pageMax) : this.max
+    this.current = this.pageCurrent ? this.pageCurrent : this.current
+    this.count = Math.ceil(this.total / this.max)
+    this.updateList()
   },
   methods: {
+    updateList () {
+      let list = []
+      if (this.count < this.max || this.current <= this.max / 2 + 1) {
+        for (let i = 1; i <= this.max && i <= this.count; i++) {
+          list.push(i)
+        }
+      } else if (this.current + this.max / 2 >= this.count) {
+        for (let i = this.count - this.max + 1; i <= this.count; i++) {
+          list.push(i)
+        }
+      } else {
+        let half = Math.floor(this.max / 2)
+        for (let i = this.current - half; i <= this.current + half; i++) {
+          list.push(i)
+        }
+      }
+      this.list = list
+    },
     currentChange (index) {
       this.current = index
+      this.updateList()
       this.$emit('updateCurrent', this.current)
+      this.$emit('update:pageCurrent', this.current)
     },
     prevPage () {
       if (this.current - 1 < this.list[0]) {
         if (this.current > 1) {
-          this.list = [this.current - 1].concat(this.list.splice(0, this.list.length - 1))
           this.currentChange(this.current - 1)
         }
       } else {
@@ -59,8 +87,6 @@ export default {
     nextPage () {
       if (this.current + 1 > this.list[this.list.length - 1]) {
         if (this.current < this.count) {
-          this.list = this.list.splice(1, this.list.length - 1)
-          this.list.push(this.current + 1)
           this.currentChange(this.current + 1)
         }
       } else {
@@ -68,36 +94,12 @@ export default {
       }
     },
     prevMore () {
-      let start = this.list[0]
-      let end = this.list[this.list.length - 1]
-      this.list = []
-      if (this.current - this.max < this.max) {
-        for (let i = 1; i <= this.max; i++) {
-          this.list.push(i)
-        }
-      } else {
-        for (let i = start - this.max; i <= end - this.max; i++) {
-          this.list.push(i)
-        }
-      }
-      // this.current -= this.max
-      this.currentChange(this.current - this.max)
+      let current = this.current - this.max < 1 ? 1 : this.current - this.max
+      this.currentChange(current)
     },
     nextMore () {
-      let start = this.list[0]
-      let end = this.list[this.list.length - 1]
-      this.list = []
-      if (this.current + this.max > this.count - this.max) {
-        for (let i = this.count - this.max + 1; i <= this.count; i++) {
-          this.list.push(i)
-        }
-      } else {
-        for (let i = start + this.max; i <= end + this.max; i++) {
-          this.list.push(i)
-        }
-      }
-      // this.current += this.max
-      this.currentChange(this.current + this.max)
+      let current = this.current + this.max > this.count ? this.count : this.current + this.max
+      this.currentChange(current)
     }
   }
 }
@@ -108,6 +110,8 @@ export default {
   user-select: none;
   width: 100%;
   .cm-pager-btn {
+    position: relative;
+    z-index: 10000;
     display: inline-block;
     box-sizing: border-box;
     height: 35px;
@@ -124,7 +128,7 @@ export default {
     font-weight: 400;
     &:hover {
       color: dodgerblue;
-      background-color: rgba(219, 233, 245, 0.67);
+      background-color: rgba(228, 243, 255, 0.58);
     }
   }
   .cm-pager-btn-left {
@@ -164,6 +168,7 @@ export default {
     }
   }
   .cm-pager-btn-active {
+    z-index: 10001;
     background-color: dodgerblue;
     color: white;
     border: 1px solid dodgerblue;
@@ -171,6 +176,12 @@ export default {
       color: white;
       background-color: dodgerblue;
     }
+  }
+  .cm-pager-btn-border-none {
+    border: 0;
+  }
+  .cm-pager-btn-space {
+    margin: 0 5px;
   }
 }
 </style>

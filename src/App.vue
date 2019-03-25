@@ -114,7 +114,7 @@
     <hr/>
     <h3>分页按钮</h3>
     <div style="text-align: center; margin-bottom: 200px;">
-      <cm-pager></cm-pager>
+      <cm-pager :page-current.sync="pageCurrent" :page-space="false" :page-border="false"></cm-pager>
     </div>
     <router-view/>
   </div>
@@ -146,12 +146,16 @@ export default {
       }, {
         lable: '登出',
         value: 'logout'
-      }]
+      }],
+      pageCurrent: 1
     }
   },
   watch: {
     data: function (val) {
-      console.log('data have change:' + val)
+      // console.log('data have change:' + val)
+    },
+    pageCurrent: function (val) {
+      // console.log(`pageCurrent:${val}`)
     }
   },
   methods: {
